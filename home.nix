@@ -96,7 +96,32 @@ in
       }
     ];
   };
+  programs.git = {
+    enable = true;
+    userName = "zedddie";
+    userEmail = "zedddiezxc@gmail.com";
+    # signing = {}; gpg later
+  };
 
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    matchBlocks = {
+      "codeberg.org" = {
+        hostname = "codeberg.org";
+        user = "git";
+        identityFile = "~/.ssh/id_codeberg";
+      };
+      "github.com" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/id_ed25519";
+      };
+      "*" = {
+        identityFile = "~/.ssh/id_ed25519";
+      };
+    };
+  };
   home.pointerCursor = {
     package = installCursor "Hatsune-Miku";
     name = "Hatsune-Miku";
