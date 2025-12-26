@@ -37,8 +37,8 @@ in
   ];
 
   home.pointerCursor = {
-    package = installCursor "Charlotte-Suzu";
-    name = "Charlotte-Suzu";
+    package = installCursor "Hatsune-Miku";
+    name = "Hatsune-Miku";
     size = 24;
     gtk.enable = true;
     x11.enable = true;
