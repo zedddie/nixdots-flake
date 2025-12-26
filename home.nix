@@ -1,4 +1,9 @@
-{ config, pkgs, zen-browser, ... }:
+{
+  config,
+  pkgs,
+  zen-browser,
+  ...
+}:
 
 {
   home.username = "zedddie";
@@ -9,10 +14,10 @@
   home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
-	vesktop
-	telegram-desktop
-	obsidian
-	zen-browser.packages.${pkgs.system}.default
-  ]
+    vesktop
+    telegram-desktop
+    obsidian
+    zen-browser.packages.${pkgs.system}.default
+  ];
   programs.home-manager.enable = true;
 }
