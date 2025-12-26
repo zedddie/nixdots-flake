@@ -10,6 +10,10 @@
     };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    nixdots-assets = {
+      url = "git+https://codeberg.org/zedddie/nixdots-assets.git";
+      flake = false;
+    };
   };
 
   outputs =
@@ -17,6 +21,7 @@
       nixpkgs,
       home-manager,
       zen-browser,
+      nixdots-assets,
       ...
     }:
     let
@@ -31,7 +36,10 @@
       homeConfigurations = {
         zedddie = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit zen-browser; };
+          extraSpecialArgs = {
+            inherit zen-browser;
+            inherit nixdots-assets;
+          };
           modules = [ ./home.nix ];
         };
       };

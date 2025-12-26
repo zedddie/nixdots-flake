@@ -2,9 +2,23 @@
   config,
   pkgs,
   zen-browser,
+  nixdots-assets,
   ...
 }:
 
+let
+  installCursor =
+    name:
+    pkgs.stdenv.mkDerivation {
+      pname = "cursor-${name}";
+      version = "1.0";
+      src = "${nixdots-assets}/cursors/${name}";
+      installPhase = ''
+        mkdir -p $out/share/icons/${name}
+        cp -r . $out/share/icons/${name}
+      '';
+    };
+in
 {
   home.username = "zedddie";
   home.homeDirectory = "/home/zedddie";
@@ -18,14 +32,16 @@
     telegram-desktop
     obsidian
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    (installCursor "Charlotte-Suzu")
+    (installCursor "Hatsune-Miku")
   ];
 
   home.pointerCursor = {
+    package = installCursor "Charlotte-Suzu";
+    name = "Charlotte-Suzu";
+    size = 24;
     gtk.enable = true;
     x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 16;
   };
 
   programs.home-manager.enable = true;

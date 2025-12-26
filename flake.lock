@@ -42,6 +42,22 @@
         "type": "github"
       }
     },
+    "nixdots-assets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766731529,
+        "narHash": "sha256-IQY5CoLZ8XhRONoCSsTje8W/q6WJd39NCbkNRLxF2qs=",
+        "ref": "refs/heads/master",
+        "rev": "4043b2403a4db522b2d358e3befe24d1631f5633",
+        "revCount": 4,
+        "type": "git",
+        "url": "https://codeberg.org/zedddie/nixdots-assets.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/zedddie/nixdots-assets.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1766651565,
@@ -77,6 +93,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "nixdots-assets": "nixdots-assets",
         "nixpkgs": "nixpkgs",
         "zen-browser": "zen-browser"
       }
