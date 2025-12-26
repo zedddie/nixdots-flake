@@ -2,16 +2,23 @@
   description = "my huome manager";
 
   inputs = {
-    nixpgks.url = "nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      zen-browser,
+      ...
+    }:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -21,6 +28,7 @@
       homeConfigurations = {
         zedddie = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+          extraSpecialArgs = { inherit zen-browser; };
           modules = [ ./home.nix ];
         };
       };
