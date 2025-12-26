@@ -19,5 +19,14 @@
     obsidian
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
+
   programs.home-manager.enable = true;
 }
