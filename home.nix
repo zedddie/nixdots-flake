@@ -17,7 +17,7 @@
     vesktop
     telegram-desktop
     obsidian
-    zen-browser.packages.${pkgs.system}.default
+    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
   programs.home-manager.enable = true;
 }
