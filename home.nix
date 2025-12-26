@@ -98,27 +98,40 @@ in
   };
   programs.git = {
     enable = true;
-    userName = "zedddie";
-    userEmail = "zedddiezxc@gmail.com";
+    settings = {
+      user.name = "zedddie";
+      user.email = "zedddiezxc@gmail.com";
+      init.defaultBranch = "master";
+    };
+
     # signing = {}; gpg later
   };
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    enableDefaultConfig = false;
     matchBlocks = {
       "codeberg.org" = {
         hostname = "codeberg.org";
         user = "git";
         identityFile = "~/.ssh/id_codeberg";
+        extraOptions = {
+          "AddKeysToAgent" = "1h";
+        };
       };
       "github.com" = {
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/id_ed25519";
+        extraOptions = {
+          "AddKeysToAgent" = "1h";
+        };
       };
       "*" = {
         identityFile = "~/.ssh/id_ed25519";
+        extraOptions = {
+          "AddKeysToAgent" = "confirm 1h";
+        };
       };
     };
   };
