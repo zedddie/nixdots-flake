@@ -68,6 +68,7 @@ in
     nixfmt
     markdownlint-cli
 
+    keepassxc
     fastfetch
     # custom
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -118,11 +119,13 @@ in
     enable = true;
     settings = {
       user.name = "zedddie";
-      user.email = "zedddiezxc@gmail.com";
+      user.email = "zedddie@protonmail.com";
       init.defaultBranch = "master";
     };
-
-    # signing = {}; gpg later
+    signing = {
+      key = "4DF5F89B318FD73C051403AABCA49F4B8DAAE8ED";
+      signByDefault = true;
+    };
   };
   programs.ssh = {
     enable = true;
