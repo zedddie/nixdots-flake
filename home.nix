@@ -77,6 +77,23 @@ in
   programs.tmux.enable = true;
   programs.fish = {
     enable = true;
+    shellAbbrs = {
+      snrs = "sudo nixos-rebuild switch";
+      senx = "sudoedit /etc/nixos/configuration.nix";
+      gst = "git status";
+      g = "git";
+      gp = "git push";
+      gf = "git fetch";
+      gc = "git commit -m";
+      ga = "git add";
+      c = "cargo";
+    };
+    interactiveShellInit = ''
+      set -g fish_greeting ""
+      fish_vi_key_bindings
+      set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+      gpg-connect-agent updatestartuptty /bye > /dev/null
+    '';
     plugins = [
       {
         name = "done";
@@ -106,7 +123,6 @@ in
 
     # signing = {}; gpg later
   };
-
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -116,24 +132,31 @@ in
         user = "git";
         identityFile = "~/.ssh/id_codeberg";
         extraOptions = {
-          "AddKeysToAgent" = "1h";
+          "AddKeysToAgent" = "yes";
         };
+        identitiesOnly = true;
       };
       "github.com" = {
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/id_ed25519";
         extraOptions = {
-          "AddKeysToAgent" = "1h";
+          "AddKeysToAgent" = "yes";
         };
+        identitiesOnly = true;
       };
       "*" = {
         identityFile = "~/.ssh/id_ed25519";
         extraOptions = {
-          "AddKeysToAgent" = "confirm 1h";
+          "AddKeysToAgent" = "yes";
         };
       };
     };
+  };
+  services.gpg-agent = {
+    enableSshSupport = true;
+    pinentry.package = pkgs.pinentry-curses;
+    defaultCacheTtl = 3600;
   };
   home.pointerCursor = {
     package = installCursor "Hatsune-Miku";
