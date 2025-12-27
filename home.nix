@@ -27,6 +27,7 @@ in
   home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
+    gnupg
     # communication
     vesktop
     telegram-desktop
@@ -126,6 +127,9 @@ in
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
+    extraConfig = ''
+      IdentityAgent /run/user/1000/gnupg/S.gpg-agent.ssh
+    '';
     matchBlocks = {
       "codeberg.org" = {
         hostname = "codeberg.org";
@@ -154,8 +158,9 @@ in
     };
   };
   services.gpg-agent = {
-    enableSshSupport = true;
-    pinentry.package = pkgs.pinentry-curses;
+    enable = true;
+    enableSshSupport = false;
+    pinentry.package = pkgs.pinentry-tty;
     defaultCacheTtl = 3600;
   };
   home.pointerCursor = {
