@@ -128,6 +128,7 @@ in
     enable = true;
     enableDefaultConfig = false;
     extraConfig = ''
+      AddressFamily inet
       IdentityAgent /run/user/1000/gnupg/S.gpg-agent.ssh
     '';
     matchBlocks = {
@@ -135,25 +136,25 @@ in
         hostname = "codeberg.org";
         user = "git";
         identityFile = "~/.ssh/id_codeberg";
-        extraOptions = {
-          "AddKeysToAgent" = "yes";
-        };
+        # extraOptions = {
+        #   "AddKeysToAgent" = "yes";
+        # };
         identitiesOnly = true;
       };
       "github.com" = {
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/id_ed25519";
-        extraOptions = {
-          "AddKeysToAgent" = "yes";
-        };
+        # extraOptions = {
+        #   "AddKeysToAgent" = "yes";
+        # };
         identitiesOnly = true;
       };
       "*" = {
         identityFile = "~/.ssh/id_ed25519";
-        extraOptions = {
-          "AddKeysToAgent" = "yes";
-        };
+        # extraOptions = {
+        #   "AddKeysToAgent" = "yes";
+        # };
       };
     };
   };
