@@ -23,32 +23,46 @@
       zen-browser,
       nixdots-assets,
       ...
-    }:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
+    }@inputs:
+    let system = "x86_64-linux";
+	pkgs = import nixpkgs {
+	specialArgs = {
+	inherit (inputs) zen-browser nixdots-assets;
+	};
+	};
+    in 
     {
-      homeConfigurations = {
-        pc = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {
-            inherit zen-browser;
-            inherit nixdots-assets;
-          };
-          modules = [ ./hosts/pc/home.nix ];
-        };
-        lap = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = {
-            inherit zen-browser;
-            inherit nixdots-assets;
-          };
-          modules = [ ./hosts/laptop/home.nix ];
-        };
-      };
+    nixosConfigurations = {
+    pc = nixpkgs.lib.nixosSystem {
+    
     };
+}
+    
+    # let
+    #   system = "x86_64-linux";
+    #   pkgs = import nixpkgs {
+    #     inherit system;
+    #     config.allowUnfree = true;
+    #   };
+    # in
+    # {
+    #   homeConfigurations = {
+    #     pc = home-manager.lib.homeManagerConfiguration {
+    #       inherit pkgs;
+    #       extraSpecialArgs = {
+    #         inherit zen-browser;
+    #         inherit nixdots-assets;
+    #       };
+    #       modules = [ ./hosts/pc/home.nix ];
+    #     };
+    #     lap = home-manager.lib.homeManagerConfiguration {
+    #       inherit pkgs;
+    #       extraSpecialArgs = {
+    #         inherit zen-browser;
+    #         inherit nixdots-assets;
+    #       };
+    #       modules = [ ./hosts/laptop/home.nix ];
+    #     };
+    #   };
+    # };
 }
