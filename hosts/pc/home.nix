@@ -3,7 +3,7 @@
   ...
 }:
 {
-  imports = [ ../../base/common.nix ];
+  imports = [ ../../base/common-home.nix ];
 
   home.packages = with pkgs; [
     mangohud
