@@ -39,7 +39,7 @@
             inherit zen-browser;
             inherit nixdots-assets;
           };
-          modules = [ ./home.nix ];
+          modules = [ ./hosts/pc/home.nix ];
         };
         lap = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -47,7 +47,7 @@
             inherit zen-browser;
             inherit nixdots-assets;
           };
-          modules = [ ./home.nix ];
+          modules = [ ./hosts/laptop/home.nix ];
         };
       };
     };
