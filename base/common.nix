@@ -54,11 +54,6 @@ in
 
     # gaming related
     obs-studio
-    mangohud
-    protonup-qt
-    lutris
-    bottles
-    heroic
 
     # code utils
     kitty
