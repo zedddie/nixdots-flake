@@ -33,7 +33,15 @@
     in
     {
       homeConfigurations = {
-        zedddie = home-manager.lib.homeManagerConfiguration {
+        pc = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit zen-browser;
+            inherit nixdots-assets;
+          };
+          modules = [ ./home.nix ];
+        };
+        lap = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit zen-browser;
