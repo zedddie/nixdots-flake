@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ../../base/common_sys.nix
+    ../../base/common-sys.nix
     /etc/nixos/hardware-configuration.nix
   ];
 
