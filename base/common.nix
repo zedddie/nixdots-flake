@@ -156,7 +156,7 @@ in
   home.pointerCursor = {
     package = installCursor "Hatsune-Miku";
     name = "Hatsune-Miku";
-    size = 52;
+    size = 42;
     gtk.enable = true;
     x11.enable = true;
   };
