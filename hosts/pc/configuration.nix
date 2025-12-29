@@ -6,6 +6,7 @@
 {
   imports = [
     ../../base/common_sys.nix
+    /etc/nixos/hardware-configuration.nix
   ];
 
   networking.hostName = "pcnix";

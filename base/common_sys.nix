@@ -14,7 +14,6 @@
 # ⠀⠀⠀⣻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁
 
 {
-  imports = [ /etc/nixos/hardware-configuration.nix ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -27,8 +26,6 @@
     "nouveau"
     "nvidiafb"
   ];
-
-  networking.hostName = "pcnix";
 
   networking.networkmanager.enable = true;
 
@@ -196,25 +193,6 @@
     nerd-fonts.ubuntu
   ];
 
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  # environment.sessionVariables.EDITOR = "nvim";
-
-  environment.sessionVariables = {
-    XCURSOR_THEME = "hackneyed";
-    XCURSOR_SIZE = "24";
-    GTK_CURSOR_THEME = "hackneyed";
-    GTK_CURSOR_SIZE = "24";
-
-    WLR_NO_HARDWARE_CURSORS = "1";
-    LIBVA_DRIVER_NAME = "nvidia";
-    XDG_SESSION_TYPE = "wayland";
-    GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    NVD_BACKEND = "direct";
-    NIXOS_OZONE_WL = "1";
-    EDITOR = "nvim";
-  };
-
   hardware.bluetooth.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -229,7 +207,6 @@
   # Enable the OpenSSH daemon.
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
