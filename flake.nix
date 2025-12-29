@@ -24,45 +24,46 @@
       nixdots-assets,
       ...
     }@inputs:
-    let system = "x86_64-linux";
-	pkgs = import nixpkgs {
-	specialArgs = {
-	inherit (inputs) zen-browser nixdots-assets;
-	};
-	};
-    in 
+    let
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit (inputs) zen-browser nixdots-assets;
+      };
+    in
     {
-    nixosConfigurations = {
-    pc = nixpkgs.lib.nixosSystem {
-    
+      nixosConfigurations = {
+
+        pc = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./hosts/pc/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.users.zedddie = import ./hosts/pc/home.nix;
+            }
+          ];
+        };
+
+        lap = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/laptop/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.users.zedddie = import ./hosts/laptop/home.nix;
+            }
+          ];
+        };
+      };
     };
-}
-    
-    # let
-    #   system = "x86_64-linux";
-    #   pkgs = import nixpkgs {
-    #     inherit system;
-    #     config.allowUnfree = true;
-    #   };
-    # in
-    # {
-    #   homeConfigurations = {
-    #     pc = home-manager.lib.homeManagerConfiguration {
-    #       inherit pkgs;
-    #       extraSpecialArgs = {
-    #         inherit zen-browser;
-    #         inherit nixdots-assets;
-    #       };
-    #       modules = [ ./hosts/pc/home.nix ];
-    #     };
-    #     lap = home-manager.lib.homeManagerConfiguration {
-    #       inherit pkgs;
-    #       extraSpecialArgs = {
-    #         inherit zen-browser;
-    #         inherit nixdots-assets;
-    #       };
-    #       modules = [ ./hosts/laptop/home.nix ];
-    #     };
-    #   };
-    # };
 }
