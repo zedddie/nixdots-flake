@@ -177,6 +177,7 @@
     nerd-fonts.droid-sans-mono
     nerd-fonts.noto
     nerd-fonts.hack
+    hermit
     dancing-script
     terminus_font
     nerd-fonts.bigblue-terminal
