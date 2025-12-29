@@ -9,6 +9,15 @@
     /etc/nixos/hardware-configuration.nix
   ];
 
+  boot.kernelParams = [
+    "nvidia-drm.modeset=1"
+    "pcie_aspm=off"
+  ];
+  boot.blacklistedKernelModules = [
+    "nouveau"
+    "nvidiafb"
+  ];
+
   networking.hostName = "pcnix";
   services.openssh = {
     enable = true;

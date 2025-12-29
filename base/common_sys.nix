@@ -18,15 +18,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = [
-    "nvidia-drm.modeset=1"
-    "pcie_aspm=off"
-  ];
-  boot.blacklistedKernelModules = [
-    "nouveau"
-    "nvidiafb"
-  ];
-
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Warsaw";
