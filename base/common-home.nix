@@ -30,7 +30,7 @@ in
     gnupg
     # communication
     vesktop
-    telegram-desktop
+    ayugram-desktop
     gajim
 
     # learn
