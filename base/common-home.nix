@@ -36,6 +36,7 @@ in {
     slurp
     grim
     wl-clipboard
+    ripgrep
 
     # 4hypr
     waybar
@@ -134,6 +135,49 @@ in {
       "*" = { identityFile = "~/.ssh/id_ed25519"; };
     };
   };
+
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "hermit";
+      size = 22;
+    };
+    shellIntegration = {
+      enableBashIntegration = false;
+      enableZshIntegration = false;
+      enableFishIntegration = true;
+      mode = "enabled no-cursor";
+    };
+    themeFile = "Aquarium_Dark";
+    settings = {
+      cursor_shape = "block";
+      cursor_blink_interval = "0.5";
+      cursor_stop_blinking_after = "15.0";
+
+      window_padding_width = 10;
+      window_border_width = 2;
+      hide_window_decorations = "no";
+      background_opacity = "0.6";
+
+      tab_bar_edge = "top";
+      tab_bar_style = "powerline";
+      tab_powerline_style = "slanted";
+      tab_title_template = "{index}: {title}";
+
+      scrollback_lines = 10000;
+      scrollback_pager =
+        "less --chop-long-lines --RAW-CONTROL-CHARS +INPUT_LINE_NUMBER";
+    };
+
+    keybindings = {
+      "ctrl+shift+c" = "copy_to_clipboard";
+      "ctrl+shift+v" = "paste_from_clipboard";
+      "ctrl+shift+equal" = "change_font_size all +1.0";
+      "ctrl+shift+minus" = "change_font_size all -1.0";
+      "ctrl+shift+backspace" = "change_font_size all 0";
+    };
+  };
+
   services.gpg-agent = {
     enable = true;
     enableSshSupport = false;
