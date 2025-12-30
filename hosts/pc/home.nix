@@ -1,15 +1,10 @@
-{
-  pkgs,
-  ...
-}:
-{
+{ pkgs, ... }: {
   imports = [ ../../base/common-home.nix ];
 
-  home.packages = with pkgs; [
-    mangohud
-    protonup-qt
-    lutris
-    bottles
-    heroic
-  ];
+  programs.git.signing = {
+    key = "4DF5F89B318FD73C051403AABCA49F4B8DAAE8ED";
+    signByDefault = true;
+  };
+
+  home.packages = with pkgs; [ mangohud protonup-qt lutris bottles heroic ];
 }

@@ -1,13 +1,7 @@
-{
-  pkgs,
-  zen-browser,
-  nixdots-assets,
-  ...
-}:
+{ pkgs, zen-browser, nixdots-assets, ... }:
 
 let
-  installCursor =
-    name:
+  installCursor = name:
     pkgs.stdenv.mkDerivation {
       pname = "cursor-${name}";
       version = "1.0";
@@ -17,8 +11,7 @@ let
         cp -r . $out/share/icons/${name}
       '';
     };
-in
-{
+in {
   home.username = "zedddie";
   home.homeDirectory = "/home/zedddie";
 
@@ -117,10 +110,6 @@ in
       user.email = "zedddie@protonmail.com";
       init.defaultBranch = "master";
     };
-    signing = {
-      key = "4DF5F89B318FD73C051403AABCA49F4B8DAAE8ED";
-      signByDefault = true;
-    };
   };
   programs.ssh = {
     enable = true;
@@ -142,9 +131,7 @@ in
         identityFile = "~/.ssh/id_ed25519";
         identitiesOnly = true;
       };
-      "*" = {
-        identityFile = "~/.ssh/id_ed25519";
-      };
+      "*" = { identityFile = "~/.ssh/id_ed25519"; };
     };
   };
   services.gpg-agent = {
