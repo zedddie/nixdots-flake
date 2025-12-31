@@ -1,8 +1,5 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   imports = [ ../../base/common-home.nix ];
 
-  home.packages = with pkgs; [
-
-  ];
+  home.packages = with pkgs; [ wireshark ];
 }
