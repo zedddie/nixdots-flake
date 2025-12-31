@@ -148,7 +148,7 @@ in {
       enableFishIntegration = true;
       mode = "enabled no-cursor";
     };
-    themeFile = "Aquarium_Dark";
+    themeFile = "GruvboxMaterialDarkHard";
     settings = {
       cursor_shape = "block";
       cursor_blink_interval = "0.5";
