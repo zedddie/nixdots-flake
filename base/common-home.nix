@@ -57,6 +57,7 @@ in {
     nixfmt
     markdownlint-cli
 
+    ipmiview
     keepassxc
     fastfetch
     # custom
