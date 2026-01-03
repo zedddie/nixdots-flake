@@ -39,7 +39,12 @@
   users.users.zedddie = {
     isNormalUser = true;
     description = "zedddie";
-    extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "wireshark"
+    ];
     shell = pkgs.fish;
   };
 
@@ -60,19 +65,25 @@
 
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       substituters = [ "https://cache.nixos.org/" ];
     };
   };
 
-  security.sudo.extraRules = [{
-    users = [ "zedddie" ];
-    commands = [{
-      command =
-        "/run/current-system/sw/bin/cp /etc/nixos/configuration.nix /home/zedddie/nixdots/";
-      options = [ "NOPASSWD" ];
-    }];
-  }];
+  security.sudo.extraRules = [
+    {
+      users = [ "zedddie" ];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/cp /etc/nixos/configuration.nix /home/zedddie/nixdots/";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 
   services.keyd = {
     enable = true;
@@ -153,8 +164,13 @@
     brightnessctl
   ];
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ libunwind binutils ];
-  virtualisation.docker = { enable = true; };
+  programs.nix-ld.libraries = with pkgs; [
+    libunwind
+    binutils
+  ];
+  virtualisation.docker = {
+    enable = true;
+  };
   fonts.fontconfig.enable = true;
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
@@ -167,6 +183,7 @@
     terminus_font
     nerd-fonts.bigblue-terminal
     nerd-fonts.open-dyslexic
+    nerd-fonts.fantasque-sans-mono
     nerd-fonts.ubuntu
   ];
 
