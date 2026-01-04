@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [ ../../base/common-home.nix ];
 
   programs.git.signing = {
@@ -6,5 +7,12 @@
     signByDefault = true;
   };
 
-  home.packages = with pkgs; [ mangohud protonup-qt lutris bottles heroic ];
+  home.packages = with pkgs; [
+    superTuxKart
+    mangohud
+    protonup-qt
+    lutris
+    bottles
+    heroic
+  ];
 }
