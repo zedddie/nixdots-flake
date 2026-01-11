@@ -67,6 +67,7 @@ in
     ipmiview
 
     # secure
+    keychain
     keepassxc
     gnupg
 
@@ -91,11 +92,14 @@ in
       ga = "git add";
       c = "cargo";
     };
+    # set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+    # gpg-connect-agent updatestartuptty /bye > /dev/null   NOTE: FOR GPG SSH HANDLING
     interactiveShellInit = ''
-      set -g fish_greeting ""
-      fish_vi_key_bindings
-      set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-      gpg-connect-agent updatestartuptty /bye > /dev/null
+            set -g fish_greeting ""
+            fish_vi_key_bindings
+      if status is-login
+      	keychain --quiet --eval $HOME/.ssh/id_ed25519 | source
+      end
     '';
     plugins = [
       {
