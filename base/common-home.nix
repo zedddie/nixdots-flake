@@ -92,6 +92,41 @@ in
       ga = "git add";
       c = "cargo";
     };
+
+    functions = {
+      fish_mode_prompt = {
+        body = ''
+                        # Do nothing if not in vi mode
+          if test "$fish_key_bindings" = "fish_vi_key_bindings"
+                            switch $fish_bind_mode
+                                case default
+                                    set_color --bold --background red red
+                                    echo '[N]'
+                                case insert
+                                    set_color f7daea --bold --background normal
+                                    echo '[I]'
+                                case visual
+                                    set_color --bold --background magenta white
+                                    echo '[V]'
+                            end
+                            set_color normal
+                            echo -n ' '
+                        end
+                    	'';
+      };
+
+      fish_prompt = {
+        body = ''
+              function fish_prompt -d "Write out the prompt"
+              # This shows up as USER@HOST /home/user/ >, with the directory colored
+              # $USER and $hostname are set by fish, so you can just use them
+              # instead of using `whoami` and `hostname`
+              printf '%s@%s %s%s%s > ' $USER $USER \
+                  (set_color e791bf) (prompt_pwd) (set_color e791bf)
+          end
+        '';
+      };
+    };
     # set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
     # gpg-connect-agent updatestartuptty /bye > /dev/null   NOTE: FOR GPG SSH HANDLING
     interactiveShellInit = ''
