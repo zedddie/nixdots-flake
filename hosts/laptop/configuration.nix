@@ -5,6 +5,8 @@
 
   networking.hostName = "laptop";
 
+  programs.steam = { enable = true; };
+
   environment.systemPackages = with pkgs; [ brightnessctl ];
   programs.wireshark = {
     enable = true;

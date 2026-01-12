@@ -1,22 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-{
-  imports = [
-    ../../base/common-sys.nix
-    /etc/nixos/hardware-configuration.nix
-  ];
+{ config, pkgs, ... }: {
+  imports = [ ../../base/common-sys.nix /etc/nixos/hardware-configuration.nix ];
 
-  boot.kernelParams = [
-    "nvidia-drm.modeset=1"
-    "pcie_aspm=off"
-  ];
-  boot.blacklistedKernelModules = [
-    "nouveau"
-    "nvidiafb"
-  ];
+  boot.kernelParams = [ "nvidia-drm.modeset=1" "pcie_aspm=off" ];
+  boot.blacklistedKernelModules = [ "nouveau" "nvidiafb" ];
 
   networking.hostName = "pcnix";
   services.openssh = {
@@ -34,12 +20,10 @@
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
-    dedicatedServer.openFirewall = true;
+    # dedicatedServer.openFirewall = true;
   };
 
-  hardware.graphics = {
-    enable = true;
-  };
+  hardware.graphics = { enable = true; };
 
   services.xserver.videoDrivers = [ "nvidia" ];
   boot.kernelPackages = pkgs.linuxPackages;
