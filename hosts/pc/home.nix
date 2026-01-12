@@ -8,7 +8,7 @@
   };
 
   home.packages = with pkgs; [
-    superTuxKart
+    qemu
     mangohud
     protonup-qt
     lutris
