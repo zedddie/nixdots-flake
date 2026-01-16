@@ -59,6 +59,36 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
+  virtualisation.docker.enable = true;
+  services.gitea-actions-runner = {
+    package = pkgs.forgejo-runner;
+    instances.default = {
+      enable = true;
+      name = "my-forgejo-runner-01";
+      token = "<registration-token>";
+      url = "https://code.forgejo.org/";
+      # tokenFile = /var/lib/
+      labels = [
+        "node-22:docker://node:22-bookworm"
+        "nixos-latest:docker://nixos/nix"
+      ];
+      settings = {
+        settings = {
+          log.level = "info";
+          runner = {
+            capacity = 1;
+            timeout = "3h";
+            fetch_interval = "2s";
+          };
+          container = {
+            network = "bridge";
+            privileged = false;
+            docker_host = "unix:///var/run/docker.sock";
+          };
+        };
+      };
+    };
+  };
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
