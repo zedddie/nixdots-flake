@@ -168,7 +168,9 @@
     packageOverrides =
       pkgs: with pkgs; {
         pidgin-with-plugins = pkgs.pidgin.override {
-          plugins = [ pidgin-otr ];
+          plugins = [
+            pidginPackages.pidgin-otr
+          ];
         };
       };
   };
