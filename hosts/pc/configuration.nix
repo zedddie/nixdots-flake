@@ -47,7 +47,7 @@
       url = "http://192.168.1.50:3000/";
       token = "ui8bz627tqCKrjUiHsNwPrm07i9r9Y3VhWi1Ft2P";
       labels = [
-        "node-22:docker://node:22-bookworm"
+        "docker:docker://node:22-bookworm"
         "nixos-latest:docker://nixos/nix"
       ];
       settings = {

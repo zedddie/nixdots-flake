@@ -149,8 +149,9 @@
   # };
   programs.hyprland.enable = true;
   environment.systemPackages = with pkgs; [
-    # dmenu
-    # st
+    #ts is required here as there is no otherr way to declare
+    #its plugins to be reproducible(afaik)
+    pidgin-with-plugins
 
     keychain
     btop
@@ -163,6 +164,14 @@
     exfatprogs
     brightnessctl
   ];
+  nixpkgs.config = {
+    packageOverrides =
+      pkgs: with pkgs; {
+        pidgin-with-plugins = pkgs.pidgin.override {
+          plugins = [ pidgin-otr ];
+        };
+      };
+  };
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     libunwind

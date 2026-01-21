@@ -72,6 +72,7 @@ in
     gnupg
 
     fastfetch
+    code-cursor-fhs
     # custom
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     (installCursor "Charlotte-Suzu")
