@@ -83,7 +83,7 @@ in
   programs.fish = {
     enable = true;
     shellAbbrs = {
-      snrs = "sudo nixos-rebuild switch";
+      snrs = "sudo nixos-rebuild switch --flake ~/.config/nix/#pc --impure";
       senx = "sudoedit /etc/nixos/configuration.nix";
       gst = "git status";
       g = "git";
