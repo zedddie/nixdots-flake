@@ -21,6 +21,7 @@ in {
 
   home.packages = with pkgs; [
     # communication
+    qtox
     vesktop
     ayugram-desktop
     gajim
@@ -235,7 +236,10 @@ in {
     gtk.enable = true;
     x11.enable = true;
   };
-
+  # to use bins installed from cargo
+  home.sessionVariables = {
+    PATH = "$HOME/.cargo/bin:$PATH";
+  };
   #git tmux
   programs.home-manager.enable = true;
 }
