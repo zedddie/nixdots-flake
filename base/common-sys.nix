@@ -39,12 +39,7 @@
   users.users.zedddie = {
     isNormalUser = true;
     description = "zedddie";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-      "wireshark"
-    ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" ];
     shell = pkgs.fish;
   };
 
@@ -65,25 +60,19 @@
 
   nix = {
     settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      experimental-features = [ "nix-command" "flakes" ];
       substituters = [ "https://cache.nixos.org/" ];
     };
   };
 
-  security.sudo.extraRules = [
-    {
-      users = [ "zedddie" ];
-      commands = [
-        {
-          command = "/run/current-system/sw/bin/cp /etc/nixos/configuration.nix /home/zedddie/nixdots/";
-          options = [ "NOPASSWD" ];
-        }
-      ];
-    }
-  ];
+  security.sudo.extraRules = [{
+    users = [ "zedddie" ];
+    commands = [{
+      command =
+        "/run/current-system/sw/bin/cp /etc/nixos/configuration.nix /home/zedddie/nixdots/";
+      options = [ "NOPASSWD" ];
+    }];
+  }];
 
   services.keyd = {
     enable = true;
@@ -139,14 +128,6 @@
   # ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   # ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
-  # services.xserver.enable = true;
-  # services.xserver.displayManager.startx.enable = true;
-  # services.xserver.windowManager.dwm = {
-  #   enable = true;
-  #   package = pkgs.dwm.overrideAttrs {
-  #     src = ./dwm;
-  #   };
-  # };
   programs.hyprland.enable = true;
   environment.systemPackages = with pkgs; [
     #ts is required here as there is no otherr way to declare
@@ -165,23 +146,15 @@
     brightnessctl
   ];
   nixpkgs.config = {
-    packageOverrides =
-      pkgs: with pkgs; {
-        pidgin-with-plugins = pkgs.pidgin.override {
-          plugins = [
-            pidginPackages.pidgin-otr
-          ];
-        };
+    packageOverrides = pkgs:
+      with pkgs; {
+        pidgin-with-plugins =
+          pkgs.pidgin.override { plugins = [ pidginPackages.pidgin-otr ]; };
       };
   };
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    libunwind
-    binutils
-  ];
-  virtualisation.docker = {
-    enable = true;
-  };
+  programs.nix-ld.libraries = with pkgs; [ libunwind binutils ];
+  virtualisation.docker = { enable = true; };
   fonts.fontconfig.enable = true;
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
@@ -207,21 +180,6 @@
     enableSSHSupport = true;
   };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "25.11";
 
 }

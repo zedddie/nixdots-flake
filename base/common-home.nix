@@ -43,7 +43,7 @@ in {
     rofi
     swww
 
-    #
+    # musikckkckckckkckckckkc
     spotify
 
     # gaming related
@@ -52,6 +52,7 @@ in {
     # code utils
     kitty
     gemini-cli-bin
+    code-cursor-fhs
     opencode
     pkg-config
     nixfmt
@@ -66,7 +67,6 @@ in {
     gnupg
 
     fastfetch
-    code-cursor-fhs
     # custom
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     (installCursor "Charlotte-Suzu")
@@ -115,7 +115,7 @@ in {
               # This shows up as USER@HOST /home/user/ >, with the directory colored
               # $USER and $hostname are set by fish, so you can just use them
               # instead of using `whoami` and `hostname`
-              printf '%s@%s %s%s%s > ' $USER $USER \
+              printf '%s@%s %s%s%s > ' $USER $hostname \
                   (set_color e791bf) (prompt_pwd) (set_color e791bf)
           end
         '';
@@ -154,7 +154,7 @@ in {
     settings = {
       user.name = "zedddie";
       user.email = "zedddie@protonmail.com";
-      init.defaultBranch = "master";
+      init.defaultBranch = "main";
     };
   };
   programs.ssh = {
@@ -237,9 +237,7 @@ in {
     x11.enable = true;
   };
   # to use bins installed from cargo
-  home.sessionVariables = {
-    PATH = "$HOME/.cargo/bin:$PATH";
-  };
+  home.sessionVariables = { PATH = "$HOME/.cargo/bin:$PATH"; };
   #git tmux
   programs.home-manager.enable = true;
 }
