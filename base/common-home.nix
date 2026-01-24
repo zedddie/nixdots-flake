@@ -1,7 +1,13 @@
-{ pkgs, zen-browser, nixdots-assets, ... }:
+{
+  pkgs,
+  zen-browser,
+  nixdots-assets,
+  ...
+}:
 
 let
-  installCursor = name:
+  installCursor =
+    name:
     pkgs.stdenv.mkDerivation {
       pname = "cursor-${name}";
       version = "1.0";
@@ -11,7 +17,8 @@ let
         cp -r . $out/share/icons/${name}
       '';
     };
-in {
+in
+{
   home.username = "zedddie";
   home.homeDirectory = "/home/zedddie";
 
@@ -77,6 +84,7 @@ in {
   programs.fish = {
     enable = true;
     shellAbbrs = {
+      grp = "head -c 42 /dev/urandom | base64 | wl-copy";
       senx = "nvim ~/.config/nix";
       gst = "git status";
       g = "git";
@@ -177,7 +185,9 @@ in {
         identityFile = "~/.ssh/id_ed25519";
         identitiesOnly = true;
       };
-      "*" = { identityFile = "~/.ssh/id_ed25519"; };
+      "*" = {
+        identityFile = "~/.ssh/id_ed25519";
+      };
     };
   };
 
@@ -210,8 +220,7 @@ in {
       tab_title_template = "{index}: {title}";
 
       scrollback_lines = 10000;
-      scrollback_pager =
-        "less --chop-long-lines --RAW-CONTROL-CHARS +INPUT_LINE_NUMBER";
+      scrollback_pager = "less --chop-long-lines --RAW-CONTROL-CHARS +INPUT_LINE_NUMBER";
     };
 
     keybindings = {
@@ -237,7 +246,9 @@ in {
     x11.enable = true;
   };
   # to use bins installed from cargo
-  home.sessionVariables = { PATH = "$HOME/.cargo/bin:$PATH"; };
+  home.sessionVariables = {
+    PATH = "$HOME/.cargo/bin:$PATH";
+  };
   #git tmux
   programs.home-manager.enable = true;
 }
