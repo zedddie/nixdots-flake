@@ -58,6 +58,7 @@ in
 
     # code utils
     kitty
+    jetbrains.rust-rover
     gemini-cli-bin
     code-cursor-fhs
     opencode
@@ -132,10 +133,10 @@ in
     # set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
     # gpg-connect-agent updatestartuptty /bye > /dev/null   NOTE: FOR GPG SSH HANDLING
     interactiveShellInit = ''
-            set -g fish_greeting ""
-            fish_vi_key_bindings
+      set -g fish_greeting ""
+      fish_vi_key_bindings
       if status is-login
-      	keychain --quiet --eval $HOME/.ssh/id_ed25519 | source
+        keychain --quiet --eval $HOME/.ssh/id_ed25519 | source
       end
     '';
     plugins = [
@@ -170,7 +171,8 @@ in
     enableDefaultConfig = false;
     extraConfig = ''
       AddressFamily inet
-      IdentityAgent /run/user/1000/gnupg/S.gpg-agent.ssh
+      #IdentityAgent /run/user/1000/gnupg/S.gpg-agent.ssh
+      AddKeysToAgent yes
     '';
     matchBlocks = {
       "codeberg.org" = {
@@ -190,6 +192,8 @@ in
       };
     };
   };
+
+  services.ssh-agent.enable = true;
 
   programs.kitty = {
     enable = true;

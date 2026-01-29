@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [ ../../base/common-home.nix ];
 
   programs.git.signing = {
@@ -17,5 +18,6 @@
     lutris
     bottles
     heroic
+    prismlauncher
   ];
 }
