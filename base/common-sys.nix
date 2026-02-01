@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 # ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠔⠒⠒⠒⠦⣤⣀⣀⡀⠀⠀
 # ⠀⠀⠀⠀⠀⠀⠀⠀⡞⠁⢀⣤⣀⠀⠀⠀⠀⠀⠀⠉⠲⣤⠀
@@ -94,6 +94,8 @@
           main = {
             capslock = "esc";
             escape = "capslock";
+	    delete = "home";
+	    home = "delete";
           };
           otherlayer = { };
         };
@@ -149,7 +151,8 @@
     btop
     bluez
     blueman
-    neovim
+    # neovim
+    inputs.nvim.packages.${pkgs.system}.default
     grc
 
     git

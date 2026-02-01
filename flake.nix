@@ -14,6 +14,7 @@
       url = "git+https://codeberg.org/zedddie/nixdots-assets.git";
       flake = false;
     };
+    nvim.url = "git+https://codeberg.org/zedddie/zix.git";
   };
 
   outputs =
@@ -22,12 +23,13 @@
       home-manager,
       zen-browser,
       nixdots-assets,
+      nvim,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
       specialArgs = {
-        inherit (inputs) zen-browser nixdots-assets;
+        inherit (inputs) zen-browser nixdots-assets nvim;
       };
     in
     {
