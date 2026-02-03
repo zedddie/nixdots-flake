@@ -94,8 +94,8 @@
           main = {
             capslock = "esc";
             escape = "capslock";
-	    delete = "home";
-	    home = "delete";
+            delete = "home";
+            home = "delete";
           };
           otherlayer = { };
         };
@@ -142,6 +142,31 @@
   # ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
   programs.hyprland.enable = true;
+  # services.displayManager.ly.enable = true;
+  # services.xserver = {
+  #   enable = true;
+  #   windowManager.dwm = {
+  #     enable = true;
+  #     package = pkgs.dwm.overrideAttrs rec {
+  #       pname = "dwm";
+  #       version = "6.8";
+  #       src = pkgs.fetchurl {
+  #         url = "https://dl.suckless.org/dwm/${pname}-${version}.tar.gz";
+  #         hash = "sha256-vPVAWJrRdNQHP076ZYgoQR4vW6Yxls+va3E2NwD1kLc=";
+  #       };
+  #       # patches = [
+  #       #   (pkgs.fetchpatch {
+  #       #     url = "https://dwm.suckless.org/patches/alt-tab/dwm-alttab-6.4.diff";
+  #       #     hash = "sha256-MiIFczEsIsK+lc07vZOeJHXphC9BdkEHgXJHQ/yPB/U=";
+  #       #   })
+  #       #   (pkgs.fetchpatch {
+  #       #     url = "https://dwm.suckless.org/patches/autoresize/dwm-autoresize-6.1.diff";
+  #       #     hash = "sha256-RIYw0Is9/H5yhWbH/HiOQdhDIs/IJAaGQIvP36QcUJM=";
+  #       #   })
+  #       # ];
+  #     };
+  #   };
+  # };
   environment.systemPackages = with pkgs; [
     #ts is required here as there is no otherr way to declare
     #its plugins to be reproducible(afaik)
@@ -152,7 +177,7 @@
     bluez
     blueman
     # neovim
-    inputs.nvim.packages.${pkgs.system}.default
+    inputs.zix.packages.${pkgs.system}.default
     grc
 
     git

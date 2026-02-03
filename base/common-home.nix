@@ -74,6 +74,7 @@ in
     keepassxc
     gnupg
 
+    ticktick
     fastfetch
     # custom
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -135,6 +136,7 @@ in
     interactiveShellInit = ''
       set -g fish_greeting ""
       fish_vi_key_bindings
+      set -g fish_cursor_default block
       if status is-login
         keychain --quiet --eval $HOME/.ssh/id_ed25519 | source
       end
@@ -204,8 +206,8 @@ in
     shellIntegration = {
       enableBashIntegration = false;
       enableZshIntegration = false;
-      enableFishIntegration = true;
-      mode = "enabled no-cursor";
+      # enableFishIntegration = true;
+      mode = "no-cursor";
     };
     themeFile = "GruvboxMaterialDarkHard";
     settings = {
@@ -216,7 +218,7 @@ in
       window_padding_width = 10;
       window_border_width = 2;
       hide_window_decorations = "no";
-      background_opacity = "0.6";
+      background_opacity = "1";
 
       tab_bar_edge = "top";
       tab_bar_style = "powerline";

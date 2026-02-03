@@ -21,7 +21,7 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "nvim",
+          "zix",
           "nixvim",
           "nixpkgs"
         ]
@@ -131,6 +131,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1765472234,
+        "narHash": "sha256-9VvC20PJPsleGMewwcWYKGzDIyjckEz8uWmT0vCDYK0=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "2fbfb1d73d239d2402a8fe03963e37aab15abe8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1768149890,
         "narHash": "sha256-iihg1oHkVkYHD1pFQifGEP+Rw1g+LZQyDNbtAqpXtNM=",
         "owner": "nixos",
@@ -145,7 +161,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1767026758,
         "narHash": "sha256-7fsac/f7nh/VaKJ/qm3I338+wAJa/3J57cOGpXi0Sbg=",
@@ -161,26 +177,10 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1765472234,
-        "narHash": "sha256-9VvC20PJPsleGMewwcWYKGzDIyjckEz8uWmT0vCDYK0=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "2fbfb1d73d239d2402a8fe03963e37aab15abe8b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts_2",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "systems": "systems"
       },
       "locked": {
@@ -197,33 +197,13 @@
         "type": "github"
       }
     },
-    "nvim": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_2",
-        "nixvim": "nixvim"
-      },
-      "locked": {
-        "lastModified": 1768378018,
-        "narHash": "sha256-DooFT2oAlcENeHPBJiqNKZZ4DnYDebnX4xxZMywBViE=",
-        "ref": "refs/heads/master",
-        "rev": "a9093eca1c10728e73328584f18a5ad167a44e75",
-        "revCount": 8,
-        "type": "git",
-        "url": "https://codeberg.org/zedddie/zix.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://codeberg.org/zedddie/zix.git"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixdots-assets": "nixdots-assets",
         "nixpkgs": "nixpkgs",
-        "nvim": "nvim",
-        "zen-browser": "zen-browser"
+        "zen-browser": "zen-browser",
+        "zix": "zix"
       }
     },
     "systems": {
@@ -244,7 +224,7 @@
     "zen-browser": {
       "inputs": {
         "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1766697593,
@@ -258,6 +238,26 @@
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
         "type": "github"
+      }
+    },
+    "zix": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": "nixpkgs_3",
+        "nixvim": "nixvim"
+      },
+      "locked": {
+        "lastModified": 1768378018,
+        "narHash": "sha256-DooFT2oAlcENeHPBJiqNKZZ4DnYDebnX4xxZMywBViE=",
+        "ref": "refs/heads/master",
+        "rev": "a9093eca1c10728e73328584f18a5ad167a44e75",
+        "revCount": 8,
+        "type": "git",
+        "url": "https://codeberg.org/zedddie/zix.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/zedddie/zix.git"
       }
     }
   },
