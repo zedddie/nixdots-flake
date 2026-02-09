@@ -31,6 +31,7 @@ in
     qtox
     vesktop
     ayugram-desktop
+    fluffychat
     gajim
 
     # learn
@@ -59,12 +60,14 @@ in
     # code utils
     kitty
     jetbrains.rust-rover
+    zed-editor
     gemini-cli-bin
     code-cursor-fhs
     opencode
     pkg-config
     nixfmt
     markdownlint-cli
+    helix
 
     # nas
     ipmiview
