@@ -27,7 +27,6 @@
       ...
     }@inputs:
     let
-      system = "x86_64-linux";
       specialArgs = {
         inherit (inputs) zen-browser nixdots-assets zix;
       };
@@ -36,11 +35,11 @@
       nixosConfigurations = {
 
         pc = nixpkgs.lib.nixosSystem {
-          inherit system;
           specialArgs = {
             inherit inputs;
           };
           modules = [
+            { nixpkgs.hostPlatform = "x86_64-linux"; }
             ./hosts/pc/configuration.nix
             home-manager.nixosModules.home-manager
             {
@@ -53,9 +52,9 @@
         };
 
         lap = nixpkgs.lib.nixosSystem {
-          inherit system;
           specialArgs = { inherit inputs; };
           modules = [
+            { nixpkgs.hostPlatform = "x86_64-linux"; }
             ./hosts/laptop/configuration.nix
             home-manager.nixosModules.home-manager
             {
