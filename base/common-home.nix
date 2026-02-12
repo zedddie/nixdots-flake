@@ -33,7 +33,7 @@ in
     ayugram-desktop
     fluffychat
     gajim
-
+    newsflash
     # learn
     obsidian
 
