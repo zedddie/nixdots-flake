@@ -29,6 +29,7 @@ in
   home.packages = with pkgs; [
     # communication
     qtox
+    tor-browser
     dino
     vesktop
     ayugram-desktop

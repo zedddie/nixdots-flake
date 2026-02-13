@@ -105,6 +105,9 @@
       };
     };
   };
+  services.tor.enable = true;
+  services.tor.client.enable = true;
+
   services.i2pd = {
     enable = false;
     proto.http.enable = true;
@@ -180,6 +183,7 @@
     inputs.zix.packages.${pkgs.stdenv.hostPlatform.system}.default
     grc
 
+    torsocks
     git
     exfatprogs
     brightnessctl
