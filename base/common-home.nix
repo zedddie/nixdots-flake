@@ -29,6 +29,7 @@ in
   home.packages = with pkgs; [
     # communication
     qtox
+    dino
     vesktop
     ayugram-desktop
     fluffychat
@@ -84,6 +85,19 @@ in
     (installCursor "Charlotte-Suzu")
     (installCursor "Hatsune-Miku")
   ];
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+  };
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
   programs.fzf.enable = true;
   programs.tmux.enable = true;
   programs.fish = {
