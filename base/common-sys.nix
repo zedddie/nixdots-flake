@@ -177,7 +177,7 @@
     bluez
     blueman
     # neovim
-    inputs.zix.packages.${pkgs.system}.default
+    inputs.zix.packages.${pkgs.stdenv.hostPlatform.system}.default
     grc
 
     git
