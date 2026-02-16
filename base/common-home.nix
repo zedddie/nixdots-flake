@@ -33,6 +33,7 @@ in
     dino
     vesktop
     ayugram-desktop
+    krita
     fluffychat
     gajim
     newsflash
@@ -83,8 +84,7 @@ in
     fastfetch
     # custom
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    (installCursor "Charlotte-Suzu")
-    (installCursor "Hatsune-Miku")
+    (installCursor "Yuurei-Angel")
   ];
 
   gtk = {
