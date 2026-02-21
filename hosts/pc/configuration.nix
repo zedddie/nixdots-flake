@@ -1,8 +1,18 @@
-{ config, pkgs, ... }: {
-  imports = [ ../../base/common-sys.nix /etc/nixos/hardware-configuration.nix ];
+{ config, pkgs, ... }:
+{
+  imports = [
+    ../../base/common-sys.nix
+    /etc/nixos/hardware-configuration.nix
+  ];
 
-  boot.kernelParams = [ "nvidia-drm.modeset=1" "pcie_aspm=off" ];
-  boot.blacklistedKernelModules = [ "nouveau" "nvidiafb" ];
+  boot.kernelParams = [
+    "nvidia-drm.modeset=1"
+    "pcie_aspm=off"
+  ];
+  boot.blacklistedKernelModules = [
+    "nouveau"
+    "nvidiafb"
+  ];
 
   networking.hostName = "pcnix";
   services.openssh = {
@@ -23,7 +33,9 @@
     # dedicatedServer.openFirewall = true;
   };
 
-  hardware.graphics = { enable = true; };
+  hardware.graphics = {
+    enable = true;
+  };
 
   services.xserver.videoDrivers = [ "nvidia" ];
   boot.kernelPackages = pkgs.linuxPackages;
@@ -44,8 +56,8 @@
     instances.default = {
       enable = true;
       name = "nixpc-runner";
-      url = "http://192.168.1.50:3000/";
-      token = "ui8bz627tqCKrjUiHsNwPrm07i9r9Y3VhWi1Ft2P";
+      url = "https://git.zedddie.rs";
+      token = "DfXHaZkx6PyUmfxIBD1GOdF3E8hdwW8vfHWMzVK8";
       labels = [
         "docker:docker://node:22-bookworm"
         "nixos-latest:docker://nixos/nix"
