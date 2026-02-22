@@ -179,6 +179,8 @@
     btop
     bluez
     blueman
+    vim
+    emacs-nox
     # neovim
     inputs.zix.packages.${pkgs.stdenv.hostPlatform.system}.default
     grc
