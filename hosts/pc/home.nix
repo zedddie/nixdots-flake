@@ -12,6 +12,7 @@
     # snrs = "sudo nixos-rebuild switch --flake ~/.config/nix/#$(whoami) --impure"; mb later
   };
   home.packages = with pkgs; [
+    kdenlive # eehehehehhehe
     qemu
     mangohud
     protonup-qt

@@ -29,7 +29,9 @@ in
   home.packages = with pkgs; [
     # communication
     qtox
+    #    psi
     tor-browser
+    thunderbird
     dino
     vesktop
     ayugram-desktop
@@ -66,7 +68,7 @@ in
     zed-editor
     gemini-cli-bin
     code-cursor-fhs
-    opencode
+    claude-code
     pkg-config
     nixfmt
     markdownlint-cli
@@ -79,6 +81,7 @@ in
     keychain
     keepassxc
     gnupg
+    gcc
 
     ticktick
     fastfetch
