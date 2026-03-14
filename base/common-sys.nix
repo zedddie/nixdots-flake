@@ -108,9 +108,17 @@
   services.tor.enable = true;
   services.tor.client.enable = true;
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+
   services.i2pd = {
-    enable = false;
+    enable = true;
     proto.http.enable = true;
+    proto.socksProxy = {
+      enable = true;
+      port = 4447;
+      address = "127.0.0.1";
+    };
     proto.httpProxy = {
       enable = true;
       port = 4444;
@@ -211,6 +219,7 @@
     nerd-fonts.droid-sans-mono
     nerd-fonts.noto
     nerd-fonts.hack
+    nerd-fonts.iosevka
     hermit
     dancing-script
     terminus_font

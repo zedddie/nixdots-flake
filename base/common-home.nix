@@ -29,7 +29,7 @@ in
   home.packages = with pkgs; [
     # communication
     qtox
-    #    psi
+    psi-plus
     tor-browser
     thunderbird
     dino
@@ -221,7 +221,7 @@ in
   programs.kitty = {
     enable = true;
     font = {
-      name = "hermit";
+      name = "IosevkaNFM";
       size = 22;
     };
     shellIntegration = {
