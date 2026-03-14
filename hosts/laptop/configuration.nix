@@ -1,11 +1,38 @@
 { pkgs, ... }:
 
 {
-  imports = [ ../../base/common-sys.nix /etc/nixos/hardware-configuration.nix ];
+  imports = [
+    ../../base/common-sys.nix
+    /etc/nixos/hardware-configuration.nix
+  ];
 
   networking.hostName = "laptop";
 
-  programs.steam = { enable = true; };
+  programs.steam = {
+    enable = true;
+  };
+
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    settings.gui.user = "zedddie";
+    user = "zedddie";
+    group = "users";
+
+    configDir = "/home/zedddie/syncthing/.config/syncthing";
+
+    devices = {
+      "vps" = {
+        id = "4RDQS6P-PBTTQZM-H65F3AY-4KA3X6X-NZV4MBT-3QK2KEE-M2WLWQO-KBWO2AJ";
+      };
+    };
+    folders = {
+      "passwds" = {
+        path = "/home/zedddie/secure_vault/";
+        devices = [ "vps" ];
+      };
+    };
+  };
 
   environment.systemPackages = with pkgs; [ brightnessctl ];
   programs.wireshark = {
