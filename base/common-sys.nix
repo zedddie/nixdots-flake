@@ -85,6 +85,12 @@
     }
   ];
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    settings.gui.user = "zedddie";
+  };
+
   services.keyd = {
     enable = true;
     keyboards = {

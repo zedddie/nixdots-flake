@@ -14,7 +14,7 @@
     "nvidiafb"
   ];
 
-  networking.hostName = "pcnix";
+  networking.hostName = "pc";
   services.openssh = {
     enable = true;
     settings = {
