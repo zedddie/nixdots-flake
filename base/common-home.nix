@@ -5,6 +5,8 @@
   ...
 }:
 
+#TODO: lookup sops-nix
+
 let
   installCursor =
     name:
