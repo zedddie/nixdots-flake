@@ -14,6 +14,7 @@
   };
   home.packages = with pkgs; [
     # kdenlive # eehehehehhehe
+    zellij
     qemu
     mangohud
     protonup-qt
