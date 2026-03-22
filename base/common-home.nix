@@ -65,6 +65,7 @@ in
     obs-studio
 
     # code utils
+    vscodium-fhs # for md -> pdf plug :>
     kitty
     jetbrains.rust-rover
     zed-editor
@@ -255,7 +256,7 @@ in
     };
 
     keybindings = {
-      "ctrl+u" = "launch --stdin-source=@screen_scrollback --type=overlay vim -";
+      "ctrl+shift+u" = "launch --stdin-source=@screen_scrollback --type=overlay vim -";
       "ctrl+shift+c" = "copy_to_clipboard";
       "ctrl+shift+v" = "paste_from_clipboard";
       "ctrl+shift+equal" = "change_font_size all +1.0";
