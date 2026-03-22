@@ -247,11 +247,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1771711829,
-        "narHash": "sha256-Y9VqnM19KPJnRlyUrR7bXQTVoQnNrpzo89zrvWjQr2s=",
+        "lastModified": 1774128931,
+        "narHash": "sha256-wPRWJiW6Fldmq+tZ2XEIq968mXJodFNbM14qNN/cpFo=",
         "ref": "refs/heads/master",
-        "rev": "1b5850fdfc12a96e29ca56dabb22cdbba8a05b94",
-        "revCount": 26,
+        "rev": "99fcd0f5fc6d38a74cc92332d0a70b64aaa3ae76",
+        "revCount": 28,
         "type": "git",
         "url": "https://codeberg.org/zedddie/zix.git"
       },

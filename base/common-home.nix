@@ -85,6 +85,8 @@ in
     gnupg
     gcc
 
+    tealdeer
+
     ticktick
     fastfetch
     # custom
@@ -253,6 +255,7 @@ in
     };
 
     keybindings = {
+      "ctrl+u" = "launch --stdin-source=@screen_scrollback --type=overlay vim -";
       "ctrl+shift+c" = "copy_to_clipboard";
       "ctrl+shift+v" = "paste_from_clipboard";
       "ctrl+shift+equal" = "change_font_size all +1.0";
