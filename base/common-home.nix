@@ -63,6 +63,7 @@ in
 
     # gaming related
     obs-studio
+    alacritty
 
     # code utils
     vscodium-fhs # for md -> pdf plug :>
