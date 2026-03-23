@@ -216,6 +216,8 @@
   };
   fonts.fontconfig.enable = true;
   fonts.packages = with pkgs; [
+    nerd-fonts.comic-shanns-mono
+    nerd-fonts.intone-mono
     nerd-fonts.fira-code
     nerd-fonts.departure-mono
     nerd-fonts.droid-sans-mono
