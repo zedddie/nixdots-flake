@@ -95,13 +95,13 @@ in
     zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     (installCursor "Yuurei-Angel")
   ];
-
   gtk = {
     enable = true;
     theme = {
       name = "Adwaita-dark";
       package = pkgs.gnome-themes-extra;
     };
+    gtk4.theme = null;
   };
   dconf.settings = {
     "org/gnome/desktop/interface" = {
