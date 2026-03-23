@@ -42,6 +42,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "dialout" # allow access the USB serial port
       "docker"
       "wireshark"
     ];
