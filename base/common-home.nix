@@ -227,7 +227,7 @@ in
   programs.kitty = {
     enable = true;
     font = {
-      name = "IosevkaNFM";
+      name = "ComicShannsMonoNFM-Regular";
       size = 22;
     };
     shellIntegration = {
