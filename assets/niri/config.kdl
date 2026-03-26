@@ -347,6 +347,11 @@ window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
+// "breeze_cursors"
+cursor {
+    xcursor-theme "Yuurei-Angel"
+    xcursor-size 52
+}
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
