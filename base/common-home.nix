@@ -87,6 +87,7 @@ in
     gnupg
     gcc
 
+    anki
     tealdeer
 
     ticktick
