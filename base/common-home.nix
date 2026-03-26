@@ -87,7 +87,7 @@ in
     gnupg
     gcc
 
-    anki
+    anki-bin
     tealdeer
 
     ticktick
