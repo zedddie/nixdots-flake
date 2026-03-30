@@ -47,16 +47,17 @@ in
     # utils
     unzip
     pavucontrol
+    ripgrep
+
+    # 4niriiii
+    waybar
+    rofi
+    swww
+    wl-color-picker
     dunst
     slurp
     grim
     wl-clipboard
-    ripgrep
-
-    # 4hypr
-    waybar
-    rofi
-    swww
 
     # musikckkckckckkckckckkc
     spotify
