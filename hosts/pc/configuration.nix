@@ -34,15 +34,17 @@
 
     configDir = "/home/zedddie/syncthing/.config/syncthing";
 
-    devices = {
-      "vps" = {
-        id = "4RDQS6P-PBTTQZM-H65F3AY-4KA3X6X-NZV4MBT-3QK2KEE-M2WLWQO-KBWO2AJ";
+    settings = {
+      devices = {
+        "vps" = {
+          id = "4RDQS6P-PBTTQZM-H65F3AY-4KA3X6X-NZV4MBT-3QK2KEE-M2WLWQO-KBWO2AJ";
+        };
       };
-    };
-    folders = {
-      "passwds" = {
-        path = "/home/zedddie/secure_vault/";
-        devices = [ "vps" ];
+      folders = {
+        "passwds" = {
+          path = "/home/zedddie/secure_vault/";
+          devices = [ "vps" ];
+        };
       };
     };
   };
