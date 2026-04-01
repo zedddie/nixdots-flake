@@ -27,6 +27,10 @@ in
   # backward compatibity version(guide says dont chanfge, in case
   # future me will fporget)
   home.stateVersion = "25.11";
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   home.packages = with pkgs; [
     # communication
@@ -78,6 +82,9 @@ in
     nixfmt
     markdownlint-cli
     helix
+
+    # rev
+    ida-free
 
     # nas
     ipmiview
