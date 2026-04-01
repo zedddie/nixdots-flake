@@ -9,8 +9,7 @@
 
   programs.fish.shellAbbrs = {
     # snrs = "sudo nixos-rebuild switch --flake ~/.config/nix/#pc --impure";
-    snrs = "sudo nixos-rebuild switch --flake ~/.config/nix/#$hostname --impure";
-    # snrs = "sudo nixos-rebuild switch --flake ~/.config/nix/#$(whoami) --impure"; mb later
+    snrs = "sudo nixos-rebuild switch --flake ~/.config/nix/#$hostname";
   };
   home.packages = with pkgs; [
     # kdenlive # eehehehehhehe

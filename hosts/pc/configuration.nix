@@ -2,7 +2,7 @@
 {
   imports = [
     ../../base/common-sys.nix
-    /etc/nixos/hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   boot.kernelParams = [
