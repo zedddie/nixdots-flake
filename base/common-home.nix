@@ -84,7 +84,7 @@ in
     helix
 
     # rev
-    ida-free
+    ghidra
 
     # nas
     ipmiview
