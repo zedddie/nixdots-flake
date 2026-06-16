@@ -15,6 +15,7 @@
       flake = false;
     };
     zix.url = "git+https://codeberg.org/zedddie/zix.git";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # archived Dec 2025
   };
 
   outputs =
@@ -24,6 +25,7 @@
       zen-browser,
       nixdots-assets,
       zix,
+      chaotic,
       ...
     }@inputs:
     let
@@ -41,12 +43,14 @@
           modules = [
             { nixpkgs.hostPlatform = "x86_64-linux"; }
             ./hosts/pc/configuration.nix
+            chaotic.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "bak";
               home-manager.extraSpecialArgs = specialArgs;
-              home-manager.users.zedddie = import ./hosts/pc/home.nix;
+              home-manager.users.charlotte = import ./hosts/pc/home.nix;
             }
           ];
         };
@@ -61,7 +65,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = specialArgs;
-              home-manager.users.zedddie = import ./hosts/laptop/home.nix;
+              home-manager.users.charlotte = import ./hosts/laptop/home.nix;
             }
           ];
         };

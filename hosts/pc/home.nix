@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   imports = [ ../../base/common-home.nix ];
 
@@ -7,19 +8,5 @@
     signByDefault = true;
   };
 
-  programs.fish.shellAbbrs = {
-    # snrs = "sudo nixos-rebuild switch --flake ~/.config/nix/#pc --impure";
-    snrs = "sudo nixos-rebuild switch --flake ~/.config/nix/#$hostname";
-  };
-  home.packages = with pkgs; [
-    # kdenlive # eehehehehhehe
-    zellij
-    qemu
-    mangohud
-    protonup-qt
-    lutris
-    bottles
-    heroic
-    prismlauncher
-  ];
+  home.packages = with pkgs; [];
 }

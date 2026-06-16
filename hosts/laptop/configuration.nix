@@ -15,11 +15,11 @@
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-    settings.gui.user = "zedddie";
-    user = "zedddie";
+    settings.gui.user = "charlotte";
+    user = "charlotte";
     group = "users";
 
-    configDir = "/home/zedddie/syncthing/.config/syncthing";
+    configDir = "/home/charlotte/syncthing/.config/syncthing";
 
     devices = {
       "vps" = {
@@ -28,7 +28,7 @@
     };
     folders = {
       "passwds" = {
-        path = "/home/zedddie/secure_vault/";
+        path = "/home/charlotte/secure_vault/";
         devices = [ "vps" ];
       };
     };

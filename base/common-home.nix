@@ -7,103 +7,17 @@
 
 #TODO: lookup sops-nix
 
-let
-  installCursor =
-    name:
-    pkgs.stdenv.mkDerivation {
-      pname = "cursor-${name}";
-      version = "1.0";
-      src = "${nixdots-assets}/cursors/${name}";
-      installPhase = ''
-        mkdir -p $out/share/icons/${name}
-        cp -r . $out/share/icons/${name}
-      '';
-    };
-in
 {
-  home.username = "zedddie";
-  home.homeDirectory = "/home/zedddie";
+  imports = [ ./packages.nix ];
 
-  # backward compatibity version(guide says dont chanfge, in case
-  # future me will fporget)
+  home.username = "charlotte";
+  home.homeDirectory = "/home/charlotte";
+
   home.stateVersion = "25.11";
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
-
-  home.packages = with pkgs; [
-    # communication
-    qtox
-    psi-plus
-    tor-browser
-    thunderbird
-    dino
-    vesktop
-    ayugram-desktop
-    krita
-    fluffychat
-    gajim
-    newsflash
-    # learn
-    obsidian
-
-    # utils
-    unzip
-    pavucontrol
-    ripgrep
-
-    # 4niriiii
-    waybar
-    rofi
-    swww
-    wl-color-picker
-    dunst
-    slurp
-    grim
-    wl-clipboard
-
-    # musikckkckckckkckckckkc
-    spotify
-
-    # gaming related
-    obs-studio
-    alacritty
-
-    # code utils
-    vscodium-fhs # for md -> pdf plug :>
-    kitty
-    jetbrains.rust-rover
-    zed-editor
-    gemini-cli-bin
-    code-cursor-fhs
-    claude-code
-    pkg-config
-    nixfmt
-    markdownlint-cli
-    helix
-
-    # rev
-    ghidra
-
-    # nas
-    ipmiview
-
-    # secure
-    keychain
-    keepassxc
-    gnupg
-    gcc
-
-    anki-bin
-    tealdeer
-
-    ticktick
-    fastfetch
-    # custom
-    zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    (installCursor "Yuurei-Angel")
-  ];
   gtk = {
     enable = true;
     theme = {
@@ -122,8 +36,8 @@ in
   programs.fish = {
     enable = true;
     shellAbbrs = {
+      snrs = "sudo nixos-rebuild switch --flake ~/.config/nix/#$hostname --impure";
       grp = "head -c 42 /dev/urandom | base64 | wl-copy";
-      senx = "nvim ~/.config/nix";
       gst = "git status";
       g = "git";
       gp = "git push";
@@ -136,40 +50,36 @@ in
     functions = {
       fish_mode_prompt = {
         body = ''
-                        # Do nothing if not in vi mode
           if test "$fish_key_bindings" = "fish_vi_key_bindings"
-                            switch $fish_bind_mode
-                                case default
-                                    set_color --bold --background red red
-                                    echo '[N]'
-                                case insert
-                                    set_color f7daea --bold --background normal
-                                    echo '[I]'
-                                case visual
-                                    set_color --bold --background magenta white
-                                    echo '[V]'
-                            end
-                            set_color normal
-                            echo -n ' '
-                        end
-                    	'';
+            switch $fish_bind_mode
+              case default
+                  set_color --bold --background red red
+                  echo '[N]'
+              case insert
+                  set_color f7daea --bold --background normal
+                  echo '[I]'
+              case visual
+                  set_color --bold --background magenta white
+                  echo '[V]'
+            end
+            set_color normal
+            echo -n ' '
+        end
+      '';
       };
 
       fish_prompt = {
-        body = ''
-              function fish_prompt -d "Write out the prompt"
-              # This shows up as USER@HOST /home/user/ >, with the directory colored
-              # $USER and $hostname are set by fish, so you can just use them
-              # instead of using `whoami` and `hostname`
-              printf '%s@%s %s%s%s > ' $USER $hostname \
-                  (set_color e791bf) (prompt_pwd) (set_color e791bf)
+        body =
+        ''
+          function fish_prompt -d "Write out the prompt"
+          printf '%s@%s %s%s%s > ' $USER $hostname \
+              (set_color e791bf) (prompt_pwd) (set_color e791bf)
           end
         '';
       };
     };
-    # set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-    # gpg-connect-agent updatestartuptty /bye > /dev/null   NOTE: FOR GPG SSH HANDLING
-    interactiveShellInit = ''
+    interactiveShellInit = 
+    ''
       set -g fish_greeting ""
       fish_vi_key_bindings
       set -g fish_cursor_default block
@@ -199,7 +109,7 @@ in
   programs.git = {
     enable = true;
     settings = {
-      user.name = "zedddie";
+      user.name = "charlotte";
       user.email = "zedddie@protonmail.com";
       init.defaultBranch = "main";
     };
@@ -242,7 +152,6 @@ in
     shellIntegration = {
       enableBashIntegration = false;
       enableZshIntegration = false;
-      # enableFishIntegration = true;
       mode = "no-cursor";
     };
     themeFile = "GruvboxMaterialDarkHard";
@@ -281,17 +190,9 @@ in
     pinentry.package = pkgs.pinentry-tty;
     defaultCacheTtl = 3600;
   };
-  home.pointerCursor = {
-    package = installCursor "Hatsune-Miku";
-    name = "Hatsune-Miku";
-    size = 42;
-    gtk.enable = true;
-    x11.enable = true;
-  };
-  # to use bins installed from cargo
   home.sessionVariables = {
     PATH = "$HOME/.cargo/bin:$PATH";
   };
-  #git tmux
+
   programs.home-manager.enable = true;
 }
