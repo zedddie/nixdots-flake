@@ -122,7 +122,7 @@
       #IdentityAgent /run/user/1000/gnupg/S.gpg-agent.ssh
       AddKeysToAgent yes
     '';
-    matchBlocks = {
+    settings = {
       "codeberg.org" = {
         hostname = "codeberg.org";
         user = "git";

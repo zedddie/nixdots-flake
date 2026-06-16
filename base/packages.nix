@@ -17,14 +17,15 @@
       ];
       communication = [
         vesktop
+        zed-editor
         zulip
         ayugram-desktop
       ];
       editors = [
-        zed-editor
+        vscodium-fhs
       ];
       dev = [
-        rust-analyzer
+        rustup
         pkg-config
         nixfmt
         markdownlint-cli
