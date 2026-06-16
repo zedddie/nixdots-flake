@@ -63,6 +63,7 @@
         obs-studio
       ];
       gaming = [
+        heroic
         mangohud
         prismlauncher
       ];
@@ -75,7 +76,6 @@
         protonup-qt
         lutris
         bottles
-        heroic
         tor-browser
         ipmiview
         ticktick
