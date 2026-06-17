@@ -90,5 +90,12 @@
         dunst
       ];
     in
-    apps ++ editors ++ communication ++ dev ++ utils ++ wayland ++ secure ++ gaming;
+    apps ++
+    editors ++
+    communication ++
+    dev ++
+    utils ++
+    wayland ++
+    secure ++
+    gaming;
 }
