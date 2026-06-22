@@ -1,9 +1,23 @@
 {
+  nixdots-assets,
   pkgs,
   zen-browser,
   ...
 }:
 
+let
+  installCursor =
+    name:
+    pkgs.stdenv.mkDerivation {
+      pname = "cursor-${name}";
+      version = "1.0";
+      src = "${nixdots-assets}/cursors/${name}";
+      installPhase = ''
+        mkdir -p $out/share/icons/${name}
+        cp -r . $out/share/icons/${name}
+      '';
+    };
+in
 {
   home.packages = with pkgs;
     let
@@ -13,7 +27,10 @@
         anki-bin
         spotify
         kitty
+        ghostty
+        peaclock
         krita
+        (installCursor "Yuurei-Angel")
       ];
       communication = [
         vesktop
