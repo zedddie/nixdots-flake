@@ -2,6 +2,7 @@
   nixdots-assets,
   pkgs,
   zen-browser,
+  helix-steel,
   ...
 }:
 
@@ -28,6 +29,7 @@ in
         spotify
         kitty
         ghostty
+        newsflash
         peaclock
         krita
         (installCursor "Yuurei-Angel")
@@ -40,6 +42,7 @@ in
       ];
       editors = [
         vscodium-fhs
+        helix-steel.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
       dev = [
         rustup
@@ -75,7 +78,6 @@ in
         iaito
       ];
       misc = [
-        newsflash
         thunderbird
         obs-studio
       ];

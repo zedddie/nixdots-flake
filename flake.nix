@@ -15,6 +15,10 @@
       flake = false;
     };
     zix.url = "git+https://codeberg.org/zedddie/zix.git";
+    helix-steel = {
+      url = "github:mattwparas/helix/steel-event-system";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # archived Dec 2025
   };
 
@@ -25,12 +29,13 @@
       zen-browser,
       nixdots-assets,
       zix,
+      helix-steel,
       chaotic,
       ...
     }@inputs:
     let
       specialArgs = {
-        inherit (inputs) zen-browser nixdots-assets zix;
+        inherit (inputs) zen-browser nixdots-assets zix helix-steel;
       };
     in
     {
@@ -64,6 +69,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "bak";
               home-manager.extraSpecialArgs = specialArgs;
               home-manager.users.charlotte = import ./hosts/laptop/home.nix;
             }

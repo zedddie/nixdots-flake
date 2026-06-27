@@ -118,7 +118,7 @@
   services.tor.enable = false;
   services.tor.client.enable = false;
   services.i2pd = {
-      enable = false;
+      enable = true;
       proto.http.enable = true;
       proto.socksProxy = {
         enable = true;
