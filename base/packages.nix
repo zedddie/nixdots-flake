@@ -42,9 +42,11 @@ in
       ];
       editors = [
         vscodium-fhs
+        vscode-fhs
         helix-steel.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
       dev = [
+        zls
         rustup
         pkg-config
         nixfmt
