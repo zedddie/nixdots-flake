@@ -53,10 +53,11 @@ in
         markdownlint-cli
         claude-code
         gcc
-        nodejs_24
+        nodejs_26
       ];
       utils = [
         qemu
+        bat
         arrpc
         xsel
         unzip

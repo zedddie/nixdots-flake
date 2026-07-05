@@ -36,6 +36,7 @@
   programs.fish = {
     enable = true;
     shellAbbrs = {
+      cat = "bat";
       snrs = "sudo nixos-rebuild switch --flake ~/.config/nix/#$hostname --impure";
       h = "head -n 1 ";
       grp = "head -c 42 /dev/urandom | base64 | wl-copy";

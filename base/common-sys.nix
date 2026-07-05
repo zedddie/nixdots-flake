@@ -54,6 +54,7 @@
   # for zulip to work
   nixpkgs.config.permittedInsecurePackages = [
     "electron-39.8.10"
+    "pnpm-10.29.2"
   ];
 
   programs = {
@@ -176,6 +177,8 @@
   programs.nix-ld.libraries = with pkgs; [
     libunwind
     binutils
+    stdenv.cc.cc.lib
+    zlib
   ];
   virtualisation.docker = {
     enable = true;

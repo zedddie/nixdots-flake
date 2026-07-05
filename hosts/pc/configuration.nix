@@ -76,7 +76,17 @@
     open = true;
     gsp.enable = true;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package =
+      let
+        prod = config.boot.kernelPackages.nvidiaPackages.production;
+      in
+      prod.overrideAttrs (old: {
+        passthru = old.passthru // {
+          open = old.passthru.open.overrideAttrs (_: {
+            allowedReferences = null;
+          });
+        };
+      });
   };
   virtualisation.docker.enable = true;
   services.gitea-actions-runner = {
