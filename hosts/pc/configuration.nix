@@ -16,6 +16,21 @@
   ];
 
   networking.hostName = "pc";
+
+  networking.networkmanager.ensureProfiles.profiles = {
+    "Wired Connection 1" = {
+      connection.type = "ethernet";
+      connection.id = "Wired Connection 1";
+      connection.interface-name = "enp12s0";
+      connection.autoconnect = true;
+
+      ipv4.method = "manual";
+      ipv4.addresses = "192.168.33.76/24";
+      ipv4.gateway = "192.168.33.1";
+      ipv4.dns = "9.9.9.9"; # base.dns.mullvad.net
+    };
+  };
+
   services.openssh = {
     enable = true;
     settings = {

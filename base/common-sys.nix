@@ -119,7 +119,7 @@
   services.tor.enable = false;
   services.tor.client.enable = false;
   services.i2pd = {
-      enable = true;
+      enable = false;
       proto.http.enable = true;
       proto.socksProxy = {
         enable = true;
@@ -139,6 +139,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  services.fail2ban = { enable = true; };
 
   # ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   # ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⡤⠤⣦⢴⠟⠋⠁⠀⢻⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -165,7 +167,7 @@
     bluez
     blueman
     vim
-    emacs-nox
+    emacs
     inputs.zix.packages.${pkgs.stdenv.hostPlatform.system}.default
     grc
     git
@@ -193,6 +195,7 @@
     nerd-fonts.noto
     nerd-fonts.hack
     nerd-fonts.iosevka
+    nerd-fonts.roboto-mono
     hermit
     dancing-script
     terminus_font
@@ -200,6 +203,9 @@
     nerd-fonts.open-dyslexic
     nerd-fonts.fantasque-sans-mono
     nerd-fonts.ubuntu
+    atkinson-hyperlegible-mono
+    intel-one-mono
+    jetbrains-mono
   ];
 
   hardware.bluetooth.enable = true;

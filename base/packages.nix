@@ -47,6 +47,7 @@ in
       ];
       dev = [
         zls
+        clang-tools
         rustup
         pkg-config
         nixfmt
@@ -65,6 +66,7 @@ in
         ripgrep
         fastfetch
         tealdeer
+        ipmiview
       ];
       wayland = [
         slurp
@@ -99,7 +101,6 @@ in
         lutris
         bottles
         tor-browser
-        ipmiview
         ticktick
         alacritty
         st
