@@ -53,7 +53,7 @@
   nixpkgs.config.allowUnfree = true;
   # for zulip to work
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
+    "electron-40.10.5"
     "pnpm-10.29.2"
   ];
 
@@ -170,6 +170,7 @@
     emacs
     inputs.zix.packages.${pkgs.stdenv.hostPlatform.system}.default
     grc
+    xfsprogs
     git
     exfatprogs
     brightnessctl
